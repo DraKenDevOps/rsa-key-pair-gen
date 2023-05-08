@@ -35,7 +35,7 @@
 
 const fs = require('fs')
 const { generateKeyPairSync } = require('crypto')
-const { formatDate } = require('./dateFormat')
+const { dateTimeFormatter } = require('./dateFormat')
 const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -57,6 +57,6 @@ readline.question(`Input Length of keys : `, len => {
         }
     })
 
-    fs.writeFileSync(`${formatDate(new Date())}-${len}-private.key`, privateKey)
-    fs.writeFileSync(`${formatDate(new Date())}-${len}-public.key`, publicKey)
+    fs.writeFileSync(`key/${dateTimeFormatter(new Date())}-${len}-private.key`, privateKey)
+    fs.writeFileSync(`key/${dateTimeFormatter(new Date())}-${len}-public.key`, publicKey)
 });
