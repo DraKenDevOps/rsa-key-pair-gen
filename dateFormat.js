@@ -1,15 +1,27 @@
-exports.formatDate = (date) => {
+exports.dateTimeFormatter = (date) => {
     let day = date.getDate();
     let month = date.getMonth();
-    let year = date.getFullYear();
+    let year = date.getFullYear()
+    let hour = date.getHours()
+    let minute = date.getMinutes()
+    let second = date.getSeconds()
 
-    if (day < 10) {
-        day = `0${day}`;
-    }
+    day = day < 10 ? `0${day}` : day;
+    month = month < 10 ? `0${month}` : month;
+    hour = hour < 10 ? `0${hour}` : hour;
+    minute = minute < 10 ? `0${minute}` : minute;
+    second = second < 10 ? `0${second}` : second;
 
-    if (month < 10) {
-        month = `0${month}`;
-    }
+    return `${year}${month}${day}${hour}${minute}${second}`;
+}
 
-    return ` ${year}${month}${day}`
+exports.dateFormatter = (date) => {
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear()
+
+    day = day < 10 ? `0${day}` : day;
+    month = month < 10 ? `0${month}` : month;
+
+    return `${year}${month}${day}`;
 }
